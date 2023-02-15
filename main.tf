@@ -1,8 +1,22 @@
-data "ibm_iam_auth_token" "tokendata" {}
+# 
+# 
 
-data "ibm_cm_version" "cm_version" {
-    version_loc_id = "b92d6984-f42a-4ba8-bf3a-2bcdb132538c.1c1186a9-ec67-44d8-abbc-9a545a265751"
+# read only data source - read an existing catalog 
+data "ibm_cm_catalog" "cm_catalog" {
+    catalog_identifier = "b92d6984-f42a-4ba8-bf3a-2bcdb132538c"
 }
+
+# this will create a catalog with the given name and description
+resource "ibm_cm_catalog" "cm_catalog" {
+  label = "kb-test-catalog"
+  short_description = "created via terraform"
+}
+
+# data "ibm_cm_version" "cm_version" {
+#     version_loc_id = "b92d6984-f42a-4ba8-bf3a-2bcdb132538c.1c1186a9-ec67-44d8-abbc-9a545a265751"
+# }
+
+#data "ibm_iam_auth_token" "tokendata" {}
 
 # resource "ibm_cm_validation" "my_cm_version_validation" {
 #   version_locator = ibm_cm_version.my_cm_version_tf.version_locator
