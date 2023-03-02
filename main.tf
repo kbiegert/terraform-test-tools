@@ -55,3 +55,22 @@ data "ibm_cm_version" "cm_version2" {
 #   }
 #   mark_version_consumable = true
 # }
+
+# data "ibm_iam_auth_token" "tokendata" {}
+
+# resource "ibm_cm_validation" "my_cm_version_vsi_validation" {
+#   version_locator = ibm_cm_version.my_cm_version_vsi.version_locator
+#   x_auth_refresh_token = data.ibm_iam_auth_token.tokendata.iam_refresh_token
+#   revalidate_if_validated = false
+#   override_values = {
+#     vsi_instance_name = "ben-tf-provider-test-vsi"
+#     vsi_id = ibm_cm_version.my_cm_version_vsi.metadata[0].vsi_vpc[0].images[0].id
+#     vpc_region = "us-south"
+#     vpc_profile = "bx2-2x8"
+#     subnet_id = "0716-d799c449-466c-4844-902c-a5d3f8948d7d"
+#     subnet_zone = "us-south-1"
+#     vpc_id = "r134-476cbb67-a6c2-4957-9806-3fcbac3498be"
+#     ssh_key_id = "r134-0c53e7f2-771f-4d0e-a19e-39f2e6e6949c"
+#   }
+#   mark_version_consumable = true
+# }
